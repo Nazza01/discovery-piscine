@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Lets Change The Background</title>
+	<style>
+	#balloon {
+		background: red;
+		height: 200px;
+		width: 200px;
+		border-radius: 100%;
+		padding: 20px;
+	}
+	</style>
+	<script>
+	function incButton() {
+		var button = document.getElementById("balloon");
+		// if (button.onmouseover)
+		var width = button.offsetWidth;
+		var height = button.offsetHeight;
+
+		var newHeight = height + 10;
+		var newWidth = width + 10;
+		if (button.style.width == "420px" || button.style.height == "420px") {
+			button.style.width = "200px";
+			button.style.height = "200px";
+		} else {
+			button.style.height = newHeight + 'px';
+			button.style.width = newWidth + 'px';
+		}
+	}
+	</script>
+</head>
+<html>
+	<body>
+		<button type="button" id="balloon" onclick="incButton()"></button>
+	</body>
+</html>

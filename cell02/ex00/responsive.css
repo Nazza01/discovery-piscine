@@ -1,0 +1,20 @@
+table {
+    width: 100%;
+    overflow-x: auto;
+    
+}
+p {
+    text-align: left;
+}
+th.First {
+    background-color: purple;
+}
+th.Second {
+    background-color: yellow;
+}
+p.firstText {
+    color: yellow;
+}
+p.secondText {
+    color: purple;
+}

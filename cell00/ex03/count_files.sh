@@ -1,0 +1,1 @@
+ls $pwd | wc -l

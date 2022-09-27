@@ -1,0 +1,43 @@
+#first {
+    font-size: 42px;
+    
+    /* Use this image */
+    background-image: url("http://assets-prd.ignimgs.com/2022/05/17/techlandrpg-1652799881816.jpg");
+    color: pink;
+}
+
+#second {
+    font-size: 42px;
+
+    /* Use this image */
+    background-image: url("https://images.alphacoders.com/203/203543.jpg");
+    color: palevioletred;
+    
+}
+.parallax  {
+    /* Set the height of the parallax */
+    min-height: 1000px;
+    
+    /* Setup the scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    /* Align the content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blackbg {
+    /* Set the height and color of the parallax segment */
+    height: 350px;
+    background-color: black;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+
