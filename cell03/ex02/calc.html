@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>Cal-u-later</title>
+        <style>
+			body {
+				background-color: black;
+			}
+			.flex-container {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100%;
+				padding: 15px;
+				gap: 5px;
+			}
+			.flex-container > div {
+				background: black;
+				border: 3px solid orange;
+				border-radius: 10px;
+				padding: 8px;
+			}
+			.left {
+				display: flex;
+			}
+			.bottom {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+        </style>
+        <script>
+			function getOperator() {
+				var documentSign = document.getElementById('sign');
+				var sign = documentSign.options[documentSign.selectedIndex].text;
+				const left = document.getElementById('leftNumber').text;
+				const right = document.getElementById('rightNumber').text;
+
+				switch(sign) {
+					case "+":
+						console.log("Adding " + left + " with " + right);
+						break;
+					case "-":
+						console.log("Subtracting " + left + " with " + right);
+						break;
+					case "*":
+						console.log("Mulitply " + left + " with " + right);
+						break;
+					case "/":
+						console.log("Division " + left + " with " + right);
+						break;
+					case "%":
+						console.log("Modulus " + left + " with " + right);
+						break;
+				}
+			}
+			function getVal() {
+			}
+        </script>
+	</head>
+	<body>
+		<div class="flex-container">
+			<div class="left">
+				<input type="text" id="leftNumber" placeholder="First Number" onblur="getOperator()">
+			</div>
+			<div class="middle-container">
+				<div class="middle">
+					<select id="sign" onclick="getOperator(value)">
+						<option>+</option>
+						<option>-</option>
+						<option>*</option>
+						<option>/</option>
+						<option>%</option>
+					</select>
+				</div>
+			</div>
+			<div class="right">
+				<input type="text" id="rightNumber" placeholder="Second Number" onblur="getOperator" />
+			</div>
+		</div>
+		<div class="bottom">
+			<input type="submit" value="Try Me!" />
+		</div>
+	</body>
+</html>
