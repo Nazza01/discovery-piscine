@@ -51,31 +51,30 @@
 				// Get the left and the right number
 				var left = Number(document.getElementById('leftNumber').value);
 				var right = Number(document.getElementById('rightNumber').value);
-				
+
 				var result = 0;
-				if (left >= 0 || right >= 0)
-				{
+				if (left < 0 || right < 0) {
+					console.log("Error :(");
+					alert("Error :(");
+				}
+				else {
 					if (sign == "+") {
 						result = left + right;
-
 						console.log(result);
 						alert("Result: " + result);
 					}
 					else if (sign == "-") {
 						result = left - right
-
 						console.log(result);
 						alert("Result: " + result);
 					}
 					else if (sign == "*") {
 						result = left * right;
-
 						console.log(result);
 						alert("Result: " + result);
 					}
 					else if (sign == "/") {
 						result = left / right;
-
 						if (result == "-Infinity") {
 							console.log("It's over 9000!");
 							alert("It's over 9000!");
@@ -94,13 +93,15 @@
 						console.log(result);
 						alert("Result: " + result);
 					}
-				} else {
-					alert("Error :(");
 				}
+			}
+			setInterval(doAlert, 30000);
+			function doAlert() {
+				alert("Please, use me...");
 			}
         </script>
 	</head>
-	<body>
+	<body id="timer">
 		<div class="flex-container">
 			<div class="left">
 				<input type="text" id="leftNumber" placeholder="First Number" />
