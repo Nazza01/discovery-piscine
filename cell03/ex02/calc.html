@@ -20,9 +20,6 @@
 				border-radius: 10px;
 				padding: 8px;
 			}
-			.left {
-				display: flex;
-			}
 			.bottom {
 				display: flex;
 				justify-content: center;
@@ -41,6 +38,7 @@
 				transition-duration: 250ms;
 				cursor: pointer;
 			}
+
         </style>
         <script>
 			function docalc() {
@@ -57,7 +55,7 @@
 					console.log("Error :(");
 					alert("Error :(");
 				}
-				else {
+				else if (left >= 0 && right >= 0) {
 					if (sign == "+") {
 						result = left + right;
 						console.log(result);
@@ -75,7 +73,7 @@
 					}
 					else if (sign == "/") {
 						result = left / right;
-						if (result == "-Infinity") {
+						if (right == 0) {
 							console.log("It's over 9000!");
 							alert("It's over 9000!");
 							return ;
@@ -85,7 +83,7 @@
 					}
 					else if (sign == "%") {
 						result = left % right;
-						if (result == "-Infinity") {
+						if (right == 0) {
 							console.log("It's over 9000!");
 							alert("It's over 9000!");
 							return ;
