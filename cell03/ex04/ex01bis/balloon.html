@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Pop The Balloon</title>
+	<style>
+		html, body {
+			height: 100%;
+		}
+		.container {
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		#balloon {
+			display: flex;
+			justify-content: center;
+			background: red;
+			height: 200px;
+			width: 200px;
+			border-radius: 100%;
+		}
+	</style>
+	<script>
+		const colEnum = [
+			"red",
+			"green",
+			"blue"
+		];
+		
+		var currCol = 0;
+
+		$()
+		function increaseBalloon() {
+			var button = document.getElementById("balloon");
+			var width = button.offsetWidth;
+			var height = button.offsetHeight;
+			
+			var newHeight = height + 10;
+			var newWidth = width + 10;
+			
+			button.style.height = newHeight + 'px';
+			button.style.width = newWidth + 'px';
+			if (button.offsetWidth >= 420) {
+				button.style.width = "200px";
+				button.style.height = "200px";
+			} else {
+				button.style.height = newHeight + 'px';
+				button.style.width = newWidth + 'px';
+			}
+			currCol++;
+			currCol %= colEnum.length;
+			button.style.background = colEnum[currCol];
+		}
+		function shrinkBalloon() {
+			var button = document.getElementById("balloon");
+			
+			var width = button.offsetWidth;
+			var height = button.offsetHeight;
+			
+			var newHeight = height - 5;
+			var newWidth = height - 5;
+			
+			if (button.offsetWidth == 200) {
+				
+			} else {
+				button.style.width = newHeight + 'px';
+				button.style.height = newWidth + 'px';
+			}
+			currCol += colEnum.length - 1;
+			currCol %= colEnum.length;
+			button.style.background = colEnum[currCol];
+		}
+	</script>
+</head>
+<html>
+	<body class="container">
+		<div id="balloon" onclick="increaseBalloon()" onmouseout="shrinkBalloon()"></div>
+	</body>
+</html>
