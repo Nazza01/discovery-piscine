@@ -45,11 +45,11 @@ body {
     transition: all ease-in-out 250ms;
 }
 
-#todo-list {
+#ft_list {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column-reverse;
+    flex-direction: column;
     background: cadetblue;
     height: 100vh;
     width: 70vw;

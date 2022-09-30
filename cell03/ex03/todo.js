@@ -1,37 +1,48 @@
-var index = 0;
+const listContainer = document.getElementById("ft_list");
 
-window.onload = function loadcache() {
-	for (var i = 0; i < localStorage.length; i++) {
-		addItem(localStorage.getItem(localStorage.key(i)));
+function newElement(){
+	let todoText = prompt("Enter your task: ");
+
+	if (todoText != "" && todoText != null) {
+		createTask(todoText);												//	Create the task using the text from the prompt
+		saveTask();															//	Save the new element
+	} else {
+		alert("Task cannot be empty!");
 	}
 }
 
-function addItem(text) {
-	var div = document.createElement("div");
-	var place = document.getElementById("todo-list");
-	
-	div.className = "item";														//	<div class="item"></div>
-	div.innerHTML = text;														//	Whatever you write in the prompt will be replaced here: <div class="item">todo_item</div>
-	div.addEventListener("click", deleteItem);									//	Add the deletion button event listener when the item is clicked
-	place.appendChild(div);														//	Add the div element into the correct place (under the todo-list div)
-	localStorage.setItem(String(index), text);
-	index++;
+function createTask(todoText){
+    let newTask = document.createElement("div");							//	Create a div using createElement
+    let taskContent = document.createTextNode(todoText);					//	Create the text to put inside the div
+
+	newTask.classList.add("item");											//	Add the item class to the div
+    newTask.addEventListener("click", removeElement);						//	Add the event listener to the 
+    newTask.appendChild(taskContent);										//	Append the text to the task
+    listContainer.prepend(newTask);											//	Add the text
 }
 
-function newItem() {
-	var todo_item = prompt("Please enter the todo item");
-	if (todo_item != null) {
-		addItem(todo_item);
-	}
+function saveTask(){
+	const savedTasks = [];													//	Initilaise the saved tasks
+
+    for (const element of listContainer.children){							//	Loop through the container's children
+        savedTasks.push(element.textContent);								//	Push the saved tasks into the array using the text content
+    }
+    localStorage.setItem("taskItem", JSON.stringify(savedTasks));			//	Save the tasks into local storage
 }
 
-function deleteItem() {
-	var conf = confirm("Would you like to delete this item?");
-	var place = document.getElementById("todo-list");
+function removeElement() {
+    let isConfirmed = confirm("Remove this from the list?");				//	Confirm the removal of the task
 
-	if (conf == true) {
-		localStorage.removeItem(localStorage.getItem(String(index)));			//	Remove the localstorage item
-		place.removeChild(this);												//	Remove the div element
-		index--;																//	Decrement the index
-	}
+	if (isConfirmed == true){												//	If the confirmation is true
+        this.remove();														//	Remove the current element
+        saveTask();															//	Save the existing tasks
+    }
+}
+
+window.onload = () => {
+    const savedTodo = JSON.parse(localStorage.getItem("taskItem")) || [];	//	Get the task list
+
+	for (let i = savedTodo.length - 1; i >= 0; i--) {						//	Iterate through the saved local storage array
+        createTask(savedTodo[i]);											//	Create a task for each saved 
+    }
 }
